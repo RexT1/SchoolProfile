@@ -106,7 +106,7 @@ $jum_pesan = $query->num_rows();
                     </li>
 
                     <li>
-                        <a href="<?php echo base_url() . 'admin/galeri' ?>">
+                        <a href="<?php echo base_url() . 'admin/slider' ?>">
                             <i class="fa fa-picture-o"></i> <span>Image Slide</span>
                             <span class="pull-right-container">
                                 <small class="label pull-right"></small>

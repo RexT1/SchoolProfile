@@ -11,7 +11,7 @@ $jum_pesan = $query->num_rows();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin | Galeri</title>
+    <title>Admin | slider</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shorcut icon" type="text/css" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
@@ -108,7 +108,7 @@ $jum_pesan = $query->num_rows();
                     </li>
 
                     <li class="treeview active">
-                        <a href="<?php echo base_url() . 'admin/galeri' ?>">
+                        <a href="<?php echo base_url() . 'admin/slider' ?>">
                             <i class="fa fa-picture-o"></i> <span>Image Slide</span>
                             <span class="pull-right-container">
                                 <small class="label pull-right"></small>
@@ -246,7 +246,7 @@ $jum_pesan = $query->num_rows();
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
                         <h4 class="modal-title" id="myModalLabel">Add Image</h4>
                     </div>
-                    <form class="form-horizontal" action="<?php echo base_url() . 'admin/galeri/simpan_galeri' ?>" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="<?php echo base_url() . 'admin/slider/simpan_slider' ?>" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
 
                             <div class="form-group">
@@ -282,21 +282,21 @@ $jum_pesan = $query->num_rows();
             $slider_gambar = $i['slider_gambar'];
         ?>
 
-            <div class="modal fade" id="ModalEdit<?php echo $galeri_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="ModalEdit<?php echo $slider_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
                             <h4 class="modal-title" id="myModalLabel">Edit Photo</h4>
                         </div>
-                        <form class="form-horizontal" action="<?php echo base_url() . 'admin/galeri/update_galeri' ?>" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="<?php echo base_url() . 'admin/slider/update_slider' ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
-                                <input type="hidden" name="kode" value="<?php echo $galeri_id; ?>" />
-                                <input type="hidden" value="<?php echo $galeri_gambar; ?>" name="gambar">
+                                <input type="hidden" name="kode" value="<?php echo $slider_id; ?>" />
+                                <input type="hidden" value="<?php echo $slider_gambar; ?>" name="gambar">
                                 <div class="form-group">
                                     <label for="inputUserName" class="col-sm-4 control-label">Judul</label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="xjudul" class="form-control" value="<?php echo $galeri_judul; ?>" id="inputUserName" placeholder="Judul" required>
+                                        <input type="text" name="xjudul" class="form-control" value="<?php echo $slider_judul; ?>" id="inputUserName" placeholder="Judul" required>
                                     </div>
                                 </div>
 
@@ -320,25 +320,25 @@ $jum_pesan = $query->num_rows();
         <!--Modal Edit Album-->
 
         <?php foreach ($data->result_array() as $i) :
-            $galeri_id = $i['galeri_id'];
-            $galeri_judul = $i['galeri_judul'];
-            $galeri_tanggal = $i['tanggal'];
-            $galeri_author = $i['galeri_author'];
-            $galeri_gambar = $i['galeri_gambar'];
+            $slider_id = $i['slider_id'];
+            $slider_judul = $i['slider_judul'];
+            $slider_tanggal = $i['tanggal'];
+            $slider_author = $i['slider_author'];
+            $slider_gambar = $i['slider_gambar'];
         ?>
             <!--Modal Hapus Pengguna-->
-            <div class="modal fade" id="ModalHapus<?php echo $galeri_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="ModalHapus<?php echo $slider_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
                             <h4 class="modal-title" id="myModalLabel">Hapus Photo</h4>
                         </div>
-                        <form class="form-horizontal" action="<?php echo base_url() . 'admin/galeri/hapus_galeri' ?>" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="<?php echo base_url() . 'admin/slider/hapus_slider' ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
-                                <input type="hidden" name="kode" value="<?php echo $galeri_id; ?>" />
-                                <input type="hidden" value="<?php echo $galeri_gambar; ?>" name="gambar">
-                                <p>Apakah Anda yakin mau menghapus Posting <b><?php echo $galeri_judul; ?></b> ?</p>
+                                <input type="hidden" name="kode" value="<?php echo $slider_id; ?>" />
+                                <input type="hidden" value="<?php echo $slider_gambar; ?>" name="gambar">
+                                <p>Apakah Anda yakin mau menghapus Posting <b><?php echo $slider_judul; ?></b> ?</p>
 
                             </div>
                             <div class="modal-footer">
