@@ -13,7 +13,6 @@ class Slider extends CI_Controller
         $this->load->library('upload');
     }
 
-
     function index()
     {
         $x['data'] = $this->m_slider->get_all_slider();
@@ -44,12 +43,13 @@ class Slider extends CI_Controller
 
                 $gambar = $gbr['file_name'];
                 $judul = strip_tags($this->input->post('xjudul'));
+                $slider_status = $this->input->post('xstatus');
                 $kode = $this->session->userdata('idadmin');
                 $user = $this->m_pengguna->get_pengguna_login($kode);
                 $p = $user->row_array();
                 $user_id = $p['pengguna_id'];
                 $user_nama = $p['pengguna_nama'];
-                $this->m_slider->simpan_slider($judul, $album, $user_id, $user_nama, $gambar);
+                $this->m_slider->simpan_slider($judul, $user_id, $user_nama, $gambar, $slider_status);
                 echo $this->session->set_flashdata('msg', 'success');
                 redirect('admin/slider');
             } else {
@@ -63,7 +63,6 @@ class Slider extends CI_Controller
 
     function update_slider()
     {
-
         $config['upload_path'] = './assets/images/'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
@@ -86,6 +85,7 @@ class Slider extends CI_Controller
 
                 $gambar = $gbr['file_name'];
                 $slider_id = $this->input->post('kode');
+                $slider_status = $this->input->post('xstatus');
                 $judul = strip_tags($this->input->post('xjudul'));
                 $images = $this->input->post('gambar');
                 $path = './assets/images/' . $images;
@@ -95,7 +95,7 @@ class Slider extends CI_Controller
                 $p = $user->row_array();
                 $user_id = $p['pengguna_id'];
                 $user_nama = $p['pengguna_nama'];
-                $this->m_slider->update_slider($slider_id, $judul, $album, $user_id, $user_nama, $gambar);
+                $this->m_slider->update_slider($slider_id, $judul, $user_id, $user_nama, $gambar, $slider_status);
                 echo $this->session->set_flashdata('msg', 'info');
                 redirect('admin/slider');
             } else {
@@ -104,13 +104,14 @@ class Slider extends CI_Controller
             }
         } else {
             $slider_id = $this->input->post('kode');
+            $slider_status = $this->input->post('xstatus');
             $judul = strip_tags($this->input->post('xjudul'));
             $kode = $this->session->userdata('idadmin');
             $user = $this->m_pengguna->get_pengguna_login($kode);
             $p = $user->row_array();
             $user_id = $p['pengguna_id'];
             $user_nama = $p['pengguna_nama'];
-            $this->m_slider->update_slider_tanpa_img($slider_id, $judul, $album, $user_id, $user_nama);
+            $this->m_slider->update_slider_tanpa_img($slider_id, $judul, $user_id, $user_nama, $slider_status);
             echo $this->session->set_flashdata('msg', 'info');
             redirect('admin/slider');
         }
@@ -119,11 +120,10 @@ class Slider extends CI_Controller
     function hapus_slider()
     {
         $kode = $this->input->post('kode');
-        $album = $this->input->post('album');
         $gambar = $this->input->post('gambar');
         $path = './assets/images/' . $gambar;
         unlink($path);
-        $this->m_slider->hapus_slider($kode, $album);
+        $this->m_slider->hapus_slider($kode);
         echo $this->session->set_flashdata('msg', 'success-hapus');
         redirect('admin/slider');
     }

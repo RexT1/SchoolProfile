@@ -66,14 +66,16 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-              <i class="fa fa-users"></i> <span>Pengguna</span>
-              <span class="pull-right-container">
-                <small class="label pull-right"></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                <i class="fa fa-users"></i> <span>Pengguna</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right"></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -119,7 +121,7 @@ $jum_pesan = $query->num_rows();
 
           <li>
             <a href="<?php echo base_url() . 'admin/slider' ?>">
-              <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+              <i class="fa fa-picture-o"></i> <span>Image Banner</span>
               <span class="pull-right-container">
                 <small class="label pull-right"></small>
               </span>
@@ -135,23 +137,25 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/inbox' ?>">
-              <i class="fa fa-envelope"></i> <span>Inbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/inbox' ?>">
+                <i class="fa fa-envelope"></i> <span>Inbox</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
+                </span>
+              </a>
+            </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/komentar' ?>">
-              <i class="fa fa-comments"></i> <span>Komentar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green"><?php echo $jum_comment; ?></small>
-              </span>
-            </a>
-          </li>
+            <li>
+              <a href="<?php echo base_url() . 'admin/komentar' ?>">
+                <i class="fa fa-comments"></i> <span>Komentar</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"><?php echo $jum_comment; ?></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/login/logout' ?>">
@@ -223,19 +227,20 @@ $jum_pesan = $query->num_rows();
 
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
-              <span class="info-box-icon bg-green"><i class="fa fa-bug"></i></span>
+              <span class="info-box-icon bg-green"><i class="fa fa-safari"></i></span>
               <?php
-              $query = $this->db->query("SELECT * FROM tbl_pengunjung WHERE pengunjung_perangkat='Googlebot'");
+              $query = $this->db->query("SELECT * FROM tbl_pengunjung WHERE pengunjung_perangkat='Safari'");
               $jml = $query->num_rows();
               ?>
               <div class="info-box-content">
-                <span class="info-box-text">Googlebot</span>
+                <span class="info-box-text">Safari</span>
                 <span class="info-box-number"><?php echo $jml; ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
+
           <!-- /.col -->
           <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
@@ -322,29 +327,8 @@ $jum_pesan = $query->num_rows();
           </div>
           <!-- /.col -->
 
-          <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box bg-yellow">
-              <span class="info-box-icon"><i class="fa fa-safari"></i></span>
-              <?php
-              $query = $this->db->query("SELECT * FROM tbl_pengunjung WHERE pengunjung_perangkat='Safari'");
-              $jml = $query->num_rows();
-              ?>
-              <div class="info-box-content">
-                <span class="info-box-text">Safari</span>
-                <span class="info-box-number"><?php echo number_format($jml); ?></span>
-
-                <div class="progress">
-                  <div class="progress-bar" style="width: 100%"></div>
-                </div>
-                <span class="progress-description">
-                  Penggunjung
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
             <!-- /.info-box -->
-            <div class="info-box bg-green">
+            <div class="info-box bg-olive">
               <span class="info-box-icon"><i class="fa fa-globe"></i></span>
               <?php
               $query = $this->db->query("SELECT * FROM tbl_pengunjung WHERE pengunjung_perangkat='Other' OR pengunjung_perangkat='Internet Explorer'");

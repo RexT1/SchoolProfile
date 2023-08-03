@@ -16,8 +16,4 @@ class M_kontak extends CI_Model{
 		return $hsl;
 	}
 
-	function update_status_kontak(){
-		$hsl=$this->db->query("UPDATE tbl_inbox SET inbox_status='0'");
-		return $hsl;
-	}
 }

@@ -49,7 +49,7 @@ class Galeri extends CI_Controller
 				$p = $user->row_array();
 				$user_id = $p['pengguna_id'];
 				$user_nama = $p['pengguna_nama'];
-				$this->m_galeri->simpan_galeri($judul, $album, $user_id, $user_nama, $gambar);
+				$this->m_galeri->simpan_galeri($judul, $user_id, $user_nama, $gambar);
 				echo $this->session->set_flashdata('msg', 'success');
 				redirect('admin/galeri');
 			} else {
@@ -95,7 +95,7 @@ class Galeri extends CI_Controller
 				$p = $user->row_array();
 				$user_id = $p['pengguna_id'];
 				$user_nama = $p['pengguna_nama'];
-				$this->m_galeri->update_galeri($galeri_id, $judul, $album, $user_id, $user_nama, $gambar);
+				$this->m_galeri->update_galeri($galeri_id, $judul, $user_id, $user_nama, $gambar);
 				echo $this->session->set_flashdata('msg', 'info');
 				redirect('admin/galeri');
 			} else {
@@ -110,7 +110,7 @@ class Galeri extends CI_Controller
 			$p = $user->row_array();
 			$user_id = $p['pengguna_id'];
 			$user_nama = $p['pengguna_nama'];
-			$this->m_galeri->update_galeri_tanpa_img($galeri_id, $judul, $album, $user_id, $user_nama);
+			$this->m_galeri->update_galeri_tanpa_img($galeri_id, $judul, $user_id, $user_nama);
 			echo $this->session->set_flashdata('msg', 'info');
 			redirect('admin/galeri');
 		}
@@ -119,11 +119,10 @@ class Galeri extends CI_Controller
 	function hapus_galeri()
 	{
 		$kode = $this->input->post('kode');
-		$album = $this->input->post('album');
 		$gambar = $this->input->post('gambar');
 		$path = './assets/images/' . $gambar;
 		unlink($path);
-		$this->m_galeri->hapus_galeri($kode, $album);
+		$this->m_galeri->hapus_galeri($kode);
 		echo $this->session->set_flashdata('msg', 'success-hapus');
 		redirect('admin/galeri');
 	}

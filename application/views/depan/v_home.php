@@ -78,64 +78,41 @@
             </div>
         </div>
     </div>
-    <section>
-        <div class="slider_img layout_two">
-            <div id="carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img class="d-block" src="<?php echo base_url() . 'theme/images/slider.jpg' ?>" alt="First slide">
-                        <div class="carousel-caption d-md-block">
-                            <div class="slider_title">
-                                <!-- <h1>Bepikir Kreatif &amp; Inovatif</h1>
-                                <h4>Bagi kami kreativitas merupakan gerbang masa depan.<br> kreativitas akan mendorong inovasi. <br> Itulah yang kami lakukan.</h4> -->
-                                <!-- <div class="slider-btn">
-                                    <a href="<?php echo site_url('artikel'); ?>" class="btn btn-default">Learn more</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block" src="<?php echo base_url() . 'theme/images/slider-2.jpg' ?>" alt="Second slide">
-                        <div class="carousel-caption d-md-block">
-                            <div class="slider_title">
-                                <!-- <h1>Guru Bekualitas Tinggi</h1>
-                                <h4>Guru merupakan faktor penting dalam proses belajar-mengajar.<br> Itulah kenapa kami mendatangkan guru-guru <br>terbaik dari berbagai penjuru.</h4> -->
-                                <!-- <div class="slider-btn">
-                                    <a href="<?php echo site_url('pengumuman'); ?>" class="btn btn-default">Learn more</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block" src="<?php echo base_url() . 'theme/images/slider-3.jpg' ?>" alt="Third slide">
-                        <div class="carousel-caption d-md-block">
-                            <div class="slider_title">
-                                <!-- <h1>Proses Belajar Interatif</h1>
-                                <h4>Kami membuat proses belajar mengajar menjadi lebih interatif.<br> dengan demikian siswa lebih menyukai <br>proses belajar.</h4> -->
-                                <!-- <div class="slider-btn">
-                                    <a href="<?php echo site_url('galeri'); ?>" class="btn btn-default">Learn more</a>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                    <i class="icon-arrow-left fa-slider" aria-hidden="true"></i>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                    <i class="icon-arrow-right fa-slider" aria-hidden="true"></i>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-    </section>
     <!--//END HEADER -->
+    <!--============================= BANNER SLIDES =============================-->
+    <section>
+        <?php
+        $slider_status = "On";
+        if ($slider_status === "On") :
+        ?>
+            <div class="slider_img layout_two">
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <?php foreach ($images->result() as $key => $row) : ?>
+                            <li data-target="#carousel" data-slide-to="<?php echo $key; ?>" <?php if ($key === 0) echo 'class="active"'; ?>></li>
+                        <?php endforeach; ?>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <?php foreach ($images->result() as $key => $row) : ?>
+                            <div class="carousel-item <?php if ($key === 0) echo 'active'; ?>">
+                                <img class="d-block" src="<?php echo base_url() . 'assets/images/' . $row->slider_gambar; ?>" alt="">
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <i class="icon-arrow-left fa-slider" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <i class="icon-arrow-right fa-slider" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        <?php endif; ?>
+    </section>
+    <!--//END BANNER SLIDES -->
 
     <!--============================= ABOUT =============================-->
     <section class="clearfix about about-style2">
@@ -153,7 +130,7 @@
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="<?php echo base_url() . 'theme/images/welcome.png' ?>" class="img-fluid about-img" alt="#" style="border: 2px solid black;">
+                    <img src="<?php echo base_url() . 'theme/images/logo.png' ?>" class="img-fluid about-img" alt="#">
                 </div>
             </div>
         </div>
@@ -217,8 +194,8 @@
                             <?php foreach ($agenda->result() as $row) : ?>
                                 <div class="event_date">
                                     <div class="event-date-wrap">
-                                        <p><?php echo date("d", strtotime($row->agenda_tanggal)); ?></p>
-                                        <span><?php echo date("M. y", strtotime($row->agenda_tanggal)); ?></span>
+                                        <p><?php echo date("d", strtotime($row->agenda_mulai)); ?></p>
+                                        <span><?php echo date("M. y", strtotime($row->agenda_mulai)); ?></span>
                                     </div>
                                 </div>
                                 <div class="date-description">
@@ -241,46 +218,27 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-8">
                     <div class="foot-logo">
                         <a href="<?php echo site_url(); ?>">
-                            <img src="<?php echo base_url() . 'theme/images/logo-white.png' ?>" class="img-fluid" alt="footer_logo">
+                            <img src="<?php echo base_url() . 'theme/images/logo-white.png' ?>" class="img-fluid" alt="footer_logo" style="max-width: 250px; height: auto;">
                         </a>
                         <p><?php echo date('Y'); ?> © copyright by <a>SMP YPMII</a>. <br>All rights reserved.</p>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="sitemap">
-                        <h3>Menu Utama</h3>
-                        <ul>
-                            <li><a href="<?php echo site_url(); ?>">Home</a></li>
-                            <li><a href="<?php echo site_url('about'); ?>">About</a></li>
-                            <li><a href="<?php echo site_url('artikel'); ?>">Blog </a></li>
-                            <li><a href="<?php echo site_url('galeri'); ?>">Galeri</a></li>
-                            <li><a href="<?php echo site_url('contact'); ?>">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="sitemap">
-                        <h3>Akademik</h3>
-                        <ul>
-                            <li><a href="<?php echo site_url('pengumuman'); ?>">Pengumuman</a></li>
-                            <li><a href="<?php echo site_url('agenda'); ?>">Agenda</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3">
+                <div class="col-4">
                     <div class="address">
                         <h3>Hubungi Kami</h3>
-                        <p><span>Alamat: </span> Jl. Masjid II No.17, RT.4/RW.4, Rw. Bunga, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13350</p>
-                        <p>Email : smpypmii@gmail.com
-                            <br> Phone : 0896-9544-7715 / (021)8564018
+                        <p style="text-align: justify;">
+                            <span>Alamat: </span> Jl. Masjid II No.17, RT.4/RW.4, Rw. Bunga, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13350
+                            <br>
+                            <span>Email: </span> smpypmii@gmail.com
+                            <br>
+                            <span>Phone: </span> 0896-9544-7715 / (021)8564018
                         </p>
                         <ul class="footer-social-icons">
                             <li><a href="#"><i class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
                             <li><a href="https://www.linkedin.com/in/aqmalidris/"><i class="fa fa-linkedin fa-in" aria-hidden="true"></i></a></li>
-                            <!-- <li><a href="#"><i class="fa fa-twitter fa-tw" aria-hidden="true"></i></a></li> -->
                         </ul>
                     </div>
                 </div>
@@ -288,6 +246,10 @@
         </div>
     </footer>
     <!--//END FOOTER -->
+    <button id="btnBackToTop" onclick="scrollToTop()">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
     <!-- jQuery, Bootstrap JS. -->
     <script src="<?php echo base_url() . 'theme/js/jquery.min.js' ?>"></script>
     <script src="<?php echo base_url() . 'theme/js/tether.min.js' ?>"></script>

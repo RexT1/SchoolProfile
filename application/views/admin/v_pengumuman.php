@@ -59,14 +59,16 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-              <i class="fa fa-users"></i> <span>Pengguna</span>
-              <span class="pull-right-container">
-                <small class="label pull-right"></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                <i class="fa fa-users"></i> <span>Pengguna</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right"></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -112,7 +114,7 @@ $jum_pesan = $query->num_rows();
 
           <li>
             <a href="<?php echo base_url() . 'admin/slider' ?>">
-              <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+              <i class="fa fa-picture-o"></i> <span>Image Banner</span>
               <span class="pull-right-container">
                 <small class="label pull-right"></small>
               </span>
@@ -194,7 +196,7 @@ $jum_pesan = $query->num_rows();
                         <th>Deskripsi</th>
                         <th>Tanggal Post</th>
                         <th>Author</th>
-                        <th style="text-align:right;">Aksi</th>
+                        <th style="text-align:right; width: 100px">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>

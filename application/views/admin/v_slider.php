@@ -11,7 +11,7 @@ $jum_pesan = $query->num_rows();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin | slider</title>
+    <title>Admin | Slider</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shorcut icon" type="text/css" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
@@ -27,9 +27,6 @@ $jum_pesan = $query->num_rows();
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url() . 'assets/dist/css/skins/_all-skins.min.css' ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() . 'assets/plugins/toast/jquery.toast.min.css' ?>" />
-
-
-
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -56,14 +53,16 @@ $jum_pesan = $query->num_rows();
                         </a>
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-                            <i class="fa fa-users"></i> <span>Pengguna</span>
-                            <span class="pull-right-container">
-                                <small class="label pull-right"></small>
-                            </span>
-                        </a>
-                    </li>
+                    <?php if ($this->session->userdata('akses') == '1') { ?>
+                        <li>
+                            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                                <i class="fa fa-users"></i> <span>Pengguna</span>
+                                <span class="pull-right-container">
+                                    <small class="label pull-right"></small>
+                                </span>
+                            </a>
+                        </li>
+                    <?php }; ?>
 
                     <li>
                         <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -107,9 +106,9 @@ $jum_pesan = $query->num_rows();
                         </a>
                     </li>
 
-                    <li class="treeview active">
+                    <li class="active">
                         <a href="<?php echo base_url() . 'admin/slider' ?>">
-                            <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+                            <i class="fa fa-picture-o"></i> <span>Image Banner</span>
                             <span class="pull-right-container">
                                 <small class="label pull-right"></small>
                             </span>
@@ -162,12 +161,12 @@ $jum_pesan = $query->num_rows();
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    Image Slide
+                    Image Banner
                     <small></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="<?php echo base_url() . 'admin/dashboard' ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Image Slide</li>
+                    <li class="active">Image Banner</li>
                 </ol>
             </section>
 
@@ -176,7 +175,6 @@ $jum_pesan = $query->num_rows();
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
-
                             <div class="box">
                                 <div class="box-header">
                                     <a class="btn btn-success btn-flat" data-toggle="modal" data-target="#myModal"><span class="fa fa-plus"></span> Add Image</a>
@@ -186,11 +184,12 @@ $jum_pesan = $query->num_rows();
                                     <table id="example1" class="table table-striped" style="font-size:13px;">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th style="width:20px;">ID</th>
                                                 <th>Gambar</th>
                                                 <th>Nama</th>
                                                 <th>Tanggal</th>
                                                 <th>Author</th>
+                                                <th>Status Banner</th>
                                                 <th style="text-align:right; width:100px;">Aksi</th>
                                             </tr>
                                         </thead>
@@ -200,17 +199,19 @@ $jum_pesan = $query->num_rows();
                                             foreach ($data->result_array() as $i) :
                                                 $no++;
                                                 $slider_id = $i['slider_id'];
+                                                $slider_gambar = $i['slider_gambar'];
                                                 $slider_judul = $i['slider_judul'];
                                                 $slider_tanggal = $i['tanggal'];
                                                 $slider_author = $i['slider_author'];
-                                                $slider_gambar = $i['slider_gambar'];
+                                                $slider_status = $i['slider_status'];
                                             ?>
                                                 <tr>
                                                     <td><?php echo $slider_id; ?></td>
-                                                    <td><img src="<?php echo base_url() . 'assets/images/' . $slider_gambar; ?>" style="width:80px;"></td>
+                                                    <td><img src="<?php echo base_url() . 'assets/images/' . $slider_gambar; ?>" style="width:150px;"></td>
                                                     <td><?php echo $slider_judul; ?></td>
                                                     <td><?php echo $slider_tanggal; ?></td>
                                                     <td><?php echo $slider_author; ?></td>
+                                                    <td><?php echo $slider_status; ?></td>
                                                     <td style="text-align:right;">
                                                         <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $slider_id; ?>"><span class="fa fa-pencil"></span></a>
                                                         <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $slider_id; ?>"><span class="fa fa-trash"></span></a>
@@ -250,16 +251,41 @@ $jum_pesan = $query->num_rows();
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="inputUserName" class="col-sm-4 control-label">Judul</label>
+                                <label for="inputUserName" class="col-sm-4 control-label">Nama Gambar</label>
                                 <div class="col-sm-7">
                                     <input type="text" name="xjudul" class="form-control" id="inputUserName" placeholder="Judul" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="inputUserName" class="col-sm-4 control-label">Image</label>
+                                <label for="inputUserName" class="col-sm-4 control-label">Upload Gambar</label>
                                 <div class="col-sm-7">
                                     <input type="file" name="filefoto" required />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputUserName" class="col-sm-4 control-label">Status Gambar</label>
+                                <div class="col-sm-7">
+                                    <?php if ($slider_status == 'On') : ?>
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="inlineRadio1" value="On" name="xstatus" checked>
+                                            <label for="inlineRadio1"> On </label>
+                                        </div>
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="inlineRadio1" value="Off" name="xstatus">
+                                            <label for="inlineRadio2"> Off </label>
+                                        </div>
+                                    <?php elseif ($slider_status == 'Off') : ?>
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="inlineRadio1" value="On" name="xstatus">
+                                            <label for="inlineRadio1"> On </label>
+                                        </div>
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="inlineRadio1" value="Off" name="xstatus" checked>
+                                            <label for="inlineRadio2"> Off </label>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
 
@@ -280,6 +306,7 @@ $jum_pesan = $query->num_rows();
             $slider_tanggal = $i['tanggal'];
             $slider_author = $i['slider_author'];
             $slider_gambar = $i['slider_gambar'];
+            $slider_status = $i['slider_status'];
         ?>
 
             <div class="modal fade" id="ModalEdit<?php echo $slider_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -287,23 +314,48 @@ $jum_pesan = $query->num_rows();
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-                            <h4 class="modal-title" id="myModalLabel">Edit Photo</h4>
+                            <h4 class="modal-title" id="myModalLabel">Edit Image</h4>
                         </div>
                         <form class="form-horizontal" action="<?php echo base_url() . 'admin/slider/update_slider' ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <input type="hidden" name="kode" value="<?php echo $slider_id; ?>" />
                                 <input type="hidden" value="<?php echo $slider_gambar; ?>" name="gambar">
                                 <div class="form-group">
-                                    <label for="inputUserName" class="col-sm-4 control-label">Judul</label>
+                                    <label for="inputUserName" class="col-sm-4 control-label">Nama Gambar</label>
                                     <div class="col-sm-7">
                                         <input type="text" name="xjudul" class="form-control" value="<?php echo $slider_judul; ?>" id="inputUserName" placeholder="Judul" required>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="inputUserName" class="col-sm-4 control-label">Image</label>
+                                    <label for="inputUserName" class="col-sm-4 control-label">Upload Gambar</label>
                                     <div class="col-sm-7">
                                         <input type="file" name="filefoto" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputUserName" class="col-sm-4 control-label">Status Gambar</label>
+                                    <div class="col-sm-7">
+                                        <?php if ($slider_status == 'On') : ?>
+                                            <div class="radio radio-info radio-inline">
+                                                <input type="radio" id="inlineRadio1" value="On" name="xstatus" checked>
+                                                <label for="inlineRadio1"> On </label>
+                                            </div>
+                                            <div class="radio radio-info radio-inline">
+                                                <input type="radio" id="inlineRadio1" value="Off" name="xstatus">
+                                                <label for="inlineRadio2"> Off </label>
+                                            </div>
+                                        <?php elseif ($slider_status == 'Off') : ?>
+                                            <div class="radio radio-info radio-inline">
+                                                <input type="radio" id="inlineRadio1" value="On" name="xstatus">
+                                                <label for="inlineRadio1"> On </label>
+                                            </div>
+                                            <div class="radio radio-info radio-inline">
+                                                <input type="radio" id="inlineRadio1" value="Off" name="xstatus" checked>
+                                                <label for="inlineRadio2"> Off </label>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 
@@ -325,6 +377,7 @@ $jum_pesan = $query->num_rows();
             $slider_tanggal = $i['tanggal'];
             $slider_author = $i['slider_author'];
             $slider_gambar = $i['slider_gambar'];
+            $slider_status = $i['slider_status'];
         ?>
             <!--Modal Hapus Pengguna-->
             <div class="modal fade" id="ModalHapus<?php echo $slider_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -332,13 +385,13 @@ $jum_pesan = $query->num_rows();
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-                            <h4 class="modal-title" id="myModalLabel">Hapus Photo</h4>
+                            <h4 class="modal-title" id="myModalLabel">Hapus Image Banner</h4>
                         </div>
                         <form class="form-horizontal" action="<?php echo base_url() . 'admin/slider/hapus_slider' ?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <input type="hidden" name="kode" value="<?php echo $slider_id; ?>" />
-                                <input type="hidden" value="<?php echo $slider_gambar; ?>" name="gambar">
-                                <p>Apakah Anda yakin mau menghapus Posting <b><?php echo $slider_judul; ?></b> ?</p>
+                                <input type="hidden" name="gambar" value="<?php echo $slider_gambar; ?>" />
+                                <p>Apakah Anda yakin mau menghapus Gambar <b><?php echo $slider_judul; ?></b> ?</p>
 
                             </div>
                             <div class="modal-footer">
@@ -350,9 +403,6 @@ $jum_pesan = $query->num_rows();
                 </div>
             </div>
         <?php endforeach; ?>
-
-
-
 
         <!-- jQuery 2.2.3 -->
         <script src="<?php echo base_url() . 'assets/plugins/jQuery/jquery-2.2.3.min.js' ?>"></script>
@@ -396,12 +446,11 @@ $jum_pesan = $query->num_rows();
                     bgColor: '#FF4859'
                 });
             </script>
-
         <?php elseif ($this->session->flashdata('msg') == 'success') : ?>
             <script type="text/javascript">
                 $.toast({
                     heading: 'Success',
-                    text: "Photo Berhasil disimpan ke database.",
+                    text: "Image Berhasil disimpan ke database.",
                     showHideTransition: 'slide',
                     icon: 'success',
                     hideAfter: false,
@@ -413,7 +462,7 @@ $jum_pesan = $query->num_rows();
             <script type="text/javascript">
                 $.toast({
                     heading: 'Info',
-                    text: "Photo berhasil di update",
+                    text: "Image berhasil di update",
                     showHideTransition: 'slide',
                     icon: 'info',
                     hideAfter: false,
@@ -425,7 +474,7 @@ $jum_pesan = $query->num_rows();
             <script type="text/javascript">
                 $.toast({
                     heading: 'Success',
-                    text: "Photo Berhasil dihapus.",
+                    text: "Image Berhasil dihapus.",
                     showHideTransition: 'slide',
                     icon: 'success',
                     hideAfter: false,

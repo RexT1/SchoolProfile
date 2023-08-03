@@ -1385,7 +1385,7 @@ a:hover {
    ============================================================== */
 footer {
   background: #2d2d2d;
-  padding: 60px 0 100px;
+  padding: 0 0 40px;
 }
 
 .subscribe {
@@ -1685,6 +1685,34 @@ footer h3 {
     padding: 42px 0 0;
   }
 }
+
+
+/* Style for the Back to Top button */
+#btnBackToTop {
+  display: none;
+  /* Hide the button by default */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #c44242;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 40px;
+  text-align: center;
+}
+
+/* Show the button when the user scrolls down 200 pixels from the top */
+@media screen and (min-width: 768px) {
+  #btnBackToTop.show {
+    display: block;
+  }
+}
+
 
 /*
  * ABOUT PAGE
@@ -4035,7 +4063,7 @@ div.panel p {
 }
 
 .contact-option {
-  border-right: 1px solid black;
+  border-right: 1px solid white;
   padding: 45px 64px;
 }
 
@@ -4069,15 +4097,15 @@ div.panel p {
 }
 
 .contact-center {
-  background: black;
+  background: white;
   border-radius: 50%;
   text-align: center;
   width: 44px;
   height: 44px;
   padding: 10px 0;
-  color: #fff;
+  color: black;
   margin: 0 auto;
-  top: -17em;
+  top: -22em;
   position: relative;
   z-index: 10;
 }
@@ -4115,7 +4143,7 @@ div.panel p {
   }
 
   .contact-option_rsp {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     padding: 5px 25px 30px;
   }
 
@@ -4151,7 +4179,7 @@ div.panel p {
 
 .about-style2 img {
   margin: 0;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .about-style2 .about-img {

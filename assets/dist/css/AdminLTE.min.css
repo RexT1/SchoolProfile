@@ -9,7 +9,7 @@
 !*/
 html,
 body {
-    height: 100%
+    height: auto
 }
 
 .layout-boxed html,
@@ -3740,7 +3740,7 @@ table.text-center th {
 }
 
 .login-page {
-    background-color: #224abe;
+    background-color: #0678d0;
 }
 
 .login-box {

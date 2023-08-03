@@ -54,14 +54,16 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li class="active">
-            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-              <i class="fa fa-users"></i> <span>Pengguna</span>
-              <span class="pull-right-container">
-                <small class="label pull-right"></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li class="active">
+              <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                <i class="fa fa-users"></i> <span>Pengguna</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right"></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -107,7 +109,7 @@ $jum_pesan = $query->num_rows();
 
           <li>
             <a href="<?php echo base_url() . 'admin/slider' ?>">
-              <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+              <i class="fa fa-picture-o"></i> <span>Image Banner</span>
               <span class="pull-right-container">
                 <small class="label pull-right"></small>
               </span>
@@ -223,10 +225,10 @@ $jum_pesan = $query->num_rows();
                             <td>Author</td>
                           <?php endif; ?>
                           <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $pengguna_id; ?>"><span class="fa fa-pencil"></span></a>
-                            <!-- <a class="btn" data-toggle="modal" data-target="#ModalResetPassword<?php echo $pengguna_id; ?>"><span class="fa fa-refresh"></span></a> -->
-                            <a class="btn" href="<?php echo base_url() . 'admin/pengguna/reset_password/' . $pengguna_id; ?>"><span class="fa fa-refresh"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $pengguna_id; ?>"><span class="fa fa-trash"></span></a>
+                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $pengguna_id; ?>" title="Edit Pengguna"><span class="fa fa-pencil"></span></a>
+                            <a class="btn" data-toggle="modal" data-target="#ModalPass<?php echo $pengguna_id; ?>" title="Ganti Password"><span class="fa fa-unlock-alt"></span></a>
+                            <a class="btn" href="<?php echo base_url() . 'admin/pengguna/reset_password/' . $pengguna_id; ?>" title="Reset Password"><span class="fa fa-refresh"></span></a>
+                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $pengguna_id; ?>" title="Hapus Pengguna"><span class="fa fa-trash"></span></a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -328,8 +330,6 @@ $jum_pesan = $query->num_rows();
                 <input type="file" name="filefoto" required />
               </div>
             </div>
-
-
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
@@ -339,7 +339,6 @@ $jum_pesan = $query->num_rows();
       </div>
     </div>
   </div>
-
 
   <?php foreach ($data->result_array() as $i) :
     $pengguna_id = $i['pengguna_id'];
@@ -362,7 +361,6 @@ $jum_pesan = $query->num_rows();
           </div>
           <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/update_pengguna' ?>" method="post" enctype="multipart/form-data">
             <div class="modal-body">
-
               <div class="form-group">
                 <label for="inputUserName" class="col-sm-4 control-label">Nama</label>
                 <div class="col-sm-7">
@@ -409,13 +407,13 @@ $jum_pesan = $query->num_rows();
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-4 control-label">Password</label>
                 <div class="col-sm-7">
-                  <input type="password" name="xpassword" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="password" name="xpassword" class="form-control" value="<?php echo $pengguna_password; ?> id=" inputPassword3" placeholder="Password" disabled>
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputPassword4" class="col-sm-4 control-label">Ulangi Password</label>
                 <div class="col-sm-7">
-                  <input type="password" name="xpassword2" class="form-control" id="inputPassword4" placeholder="Ulangi Password">
+                  <input type="password" name="xpassword2" class="form-control" value="<?php echo $pengguna_password; ?> id=" inputPassword4" placeholder="Ulangi Password" disabled>
                 </div>
               </div>
               <div class="form-group">
@@ -444,7 +442,6 @@ $jum_pesan = $query->num_rows();
                   <input type="file" name="filefoto" />
                 </div>
               </div>
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
@@ -479,11 +476,55 @@ $jum_pesan = $query->num_rows();
             <div class="modal-body">
               <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>" />
               <p>Apakah Anda yakin mau menghapus Pengguna <b><?php echo $pengguna_nama; ?></b> ?</p>
-
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary btn-flat" id="simpan">Hapus</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <?php endforeach; ?>
+
+  <?php foreach ($data->result_array() as $i) :
+    $pengguna_id = $i['pengguna_id'];
+    $pengguna_username = $i['pengguna_username'];
+    $pengguna_password = $i['pengguna_password'];
+  ?>
+    <!--Modal Password Pengguna-->
+    <div class="modal fade" id="ModalPass<?php echo $pengguna_id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
+            <h4 class="modal-title" id="myModalLabel">Edit Password</h4>
+          </div>
+          <form class="form-horizontal" action="<?php echo base_url() . 'admin/pengguna/reset_pengguna' ?>" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="hidden" name="kode" value="<?php echo $pengguna_id; ?>">
+                <label for="inputUserName" class="col-sm-4 control-label">Username</label>
+                <div class="col-sm-7">
+                  <input type="text" name="xusername" class="form-control" value="<?php echo $pengguna_username; ?>" id="inputUserName" placeholder="Username" disabled>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">New Password</label>
+                <div class="col-sm-7">
+                  <input type="password" name="xpassword" class="form-control" id="inputPassword3" placeholder="New Password">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-4 control-label">Re-type New Password</label>
+                <div class="col-sm-7">
+                  <input type="password" name="xpassword2" class="form-control" id="inputPassword3" placeholder="Re-type New Password">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary btn-flat" id="simpan">Update</button>
             </div>
           </form>
         </div>

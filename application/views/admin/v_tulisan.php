@@ -62,14 +62,16 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-              <i class="fa fa-users"></i> <span>Pengguna</span>
-              <span class="pull-right-container">
-                <small class="label pull-right"></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                <i class="fa fa-users"></i> <span>Pengguna</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right"></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -115,7 +117,7 @@ $jum_pesan = $query->num_rows();
 
           <li>
             <a href="<?php echo base_url() . 'admin/slider' ?>">
-              <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+              <i class="fa fa-picture-o"></i> <span>Image Banner</span>
               <span class="pull-right-container">
                 <small class="label pull-right"></small>
               </span>
@@ -262,7 +264,7 @@ $jum_pesan = $query->num_rows();
               <div class="modal-body">
                 <input type="hidden" name="kode" value="<?php echo $tulisan_id; ?>" />
                 <input type="hidden" value="<?php echo $tulisan_gambar; ?>" name="gambar">
-                <p>Apakah Anda yakin mau menghapus Posting <b><?php echo $tulisan_judul; ?></b> ?</p>
+                <p>Apakah Anda yakin mau menghapus Postingan <b><?php echo $tulisan_judul; ?></b> ?</p>
 
               </div>
               <div class="modal-footer">
@@ -275,8 +277,12 @@ $jum_pesan = $query->num_rows();
       </div>
     <?php endforeach; ?>
 
-
-
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0
+      </div>
+      <strong>Copyright &copy; 2023 <a href="#">SMP YPMII Jakarta Timur</a>.</strong> All rights reserved.
+    </footer>
 
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url() . 'assets/plugins/jQuery/jquery-2.2.3.min.js' ?>"></script>

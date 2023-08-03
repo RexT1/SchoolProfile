@@ -11,7 +11,7 @@ $jum_pesan = $query->num_rows();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin | Update Post</title>
+    <title>Admin | Update About</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shorcut icon" type="text/css" href="<?php echo base_url() . 'assets/images/favicon.png' ?>">
@@ -64,14 +64,16 @@ $jum_pesan = $query->num_rows();
                         </a>
                     </li>
 
-                    <li>
-                        <a href="<?php echo base_url() . 'admin/pengguna' ?>">
-                            <i class="fa fa-users"></i> <span>Pengguna</span>
-                            <span class="pull-right-container">
-                                <small class="label pull-right"></small>
-                            </span>
-                        </a>
-                    </li>
+                    <?php if ($this->session->userdata('akses') == '1') { ?>
+                        <li>
+                            <a href="<?php echo base_url() . 'admin/pengguna' ?>">
+                                <i class="fa fa-users"></i> <span>Pengguna</span>
+                                <span class="pull-right-container">
+                                    <small class="label pull-right"></small>
+                                </span>
+                            </a>
+                        </li>
+                    <?php }; ?>
 
                     <li class="active">
                         <a href="<?php echo base_url() . 'admin/about' ?>">
@@ -117,7 +119,7 @@ $jum_pesan = $query->num_rows();
 
                     <li>
                         <a href="<?php echo base_url() . 'admin/slider' ?>">
-                            <i class="fa fa-picture-o"></i> <span>Image Slide</span>
+                            <i class="fa fa-picture-o"></i> <span>Image Banner</span>
                             <span class="pull-right-container">
                                 <small class="label pull-right"></small>
                             </span>
@@ -170,7 +172,7 @@ $jum_pesan = $query->num_rows();
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <h1>
-                    About
+                    Update About
                     <small></small>
                 </h1>
                 <ol class="breadcrumb">
@@ -186,7 +188,7 @@ $jum_pesan = $query->num_rows();
                 <!-- SELECT2 EXAMPLE -->
                 <div class="box box-danger">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Update Visi</h3>
+                        <h3 class="box-title">Visi</h3>
                     </div>
                     <?php
                     $b = $data->row_array();
@@ -219,7 +221,7 @@ $jum_pesan = $query->num_rows();
                     <div class="col-md-8">
                         <div class="box box-danger">
                             <div class="box-header">
-                                <h3 class="box-title">Update Misi</h3>
+                                <h3 class="box-title">Misi</h3>
                             </div>
                             <div class="box-body">
                                 <textarea id="ckeditor_misi" name="xmisi" required><?php echo $b['about_misi']; ?></textarea>
@@ -235,7 +237,7 @@ $jum_pesan = $query->num_rows();
                     <div class="col-md-8">
                         <div class="box box-danger">
                             <div class="box-header">
-                                <h3 class="box-title">Update Kata Sambutan</h3>
+                                <h3 class="box-title">Kata Sambutan</h3>
                             </div>
                             <div class="box-body">
                                 <textarea id="ckeditor_sambutan" name="xsambutan" required><?php echo $b['about_sambutan']; ?></textarea>

@@ -156,6 +156,24 @@ $(function () {
             return false;
         });
     }
+
+    /* ================================================
+    Back to Top Scrolling
+    ================================================ */
+    $(window).scroll(function () {
+        var btnBackToTop = $("#btnBackToTop");
+        if ($(this).scrollTop() > 200) {
+            btnBackToTop.addClass("show");
+        } else {
+            btnBackToTop.removeClass("show");
+        }
+    });
+
+    // Scroll to the top of the page smoothly
+    $("#btnBackToTop").click(function () {
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+    });
+
     /* ================================================
         Masonry Gallery
         ================================================ */

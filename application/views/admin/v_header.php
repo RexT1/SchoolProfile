@@ -24,7 +24,7 @@ $jum_pesan = $query->num_rows();
       <ul class="nav navbar-nav">
         <!-- Messages: style can be found in dropdown.less-->
         <li class="dropdown messages-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Lihat Pesan">
             <i class="fa fa-envelope-o"></i>
             <span class="label label-success"><?php echo $jum_pesan; ?></span>
           </a>
