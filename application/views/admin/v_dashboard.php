@@ -327,6 +327,7 @@ $jum_pesan = $query->num_rows();
           </div>
           <!-- /.col -->
 
+          <div class="col-md-4">
             <!-- /.info-box -->
             <div class="info-box bg-olive">
               <span class="info-box-icon"><i class="fa fa-globe"></i></span>
@@ -396,6 +397,8 @@ $jum_pesan = $query->num_rows();
           <!-- /.col -->
         </div>
         <!-- /.row -->
+
+
       </section>
       <!-- /.content -->
     </div>
