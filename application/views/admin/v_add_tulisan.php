@@ -267,11 +267,11 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.form group -->
                 <!-- <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" class="minimal" name="ximgslider" value="1">
-                                        Tampilkan pada Image Slider
-                                    </label>
-                                </div> -->
+                  <label>
+                    <input type="checkbox" class="minimal" name="ximgslider" value="1">
+                    Tampilkan pada Image Slider
+                  </label>
+                </div> -->
 
               </div>
               <!-- /.box-body -->

@@ -133,23 +133,25 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/inbox' ?>">
-              <i class="fa fa-envelope"></i> <span>Inbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/inbox' ?>">
+                <i class="fa fa-envelope"></i> <span>Inbox</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
+                </span>
+              </a>
+            </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/komentar' ?>">
-              <i class="fa fa-comments"></i> <span>Komentar</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green"><?php echo $jum_comment; ?></small>
-              </span>
-            </a>
-          </li>
+            <li>
+              <a href="<?php echo base_url() . 'admin/komentar' ?>">
+                <i class="fa fa-comments"></i> <span>Komentar</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"><?php echo $jum_comment; ?></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li>
             <a href="<?php echo base_url() . 'admin/login/logout' ?>">
