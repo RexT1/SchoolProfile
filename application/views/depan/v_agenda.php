@@ -154,10 +154,10 @@
                             <br>
                             <span>Phone: </span> 0896-9544-7715 / (021)8564018
                         </p>
-                        <ul class="footer-social-icons">
+                        <!-- <ul class="footer-social-icons">
                             <li><a href="#"><i class="fa fa-facebook fa-fb" aria-hidden="true"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/aqmalidris/"><i class="fa fa-linkedin fa-in" aria-hidden="true"></i></a></li>
-                        </ul>
+                            <li><a href="#"><i class="fa fa-linkedin fa-in" aria-hidden="true"></i></a></li>
+                        </ul> -->
                     </div>
                 </div>
             </div>
