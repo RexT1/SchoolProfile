@@ -146,7 +146,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-8">
                     <div class="foot-logo">
                         <a href="<?php echo site_url(); ?>">
                             <img src="<?php echo base_url() . 'theme/images/logo-white.png' ?>" class="img-fluid" alt="footer_logo" style="max-width: 250px; height: auto;">
@@ -154,7 +154,7 @@
                         <p><?php echo date('Y'); ?> © copyright by <a>SMP YPMII</a>. <br>All rights reserved.</p>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="address">
                         <h3>Hubungi Kami</h3>
                         <p style="text-align: justify;">
