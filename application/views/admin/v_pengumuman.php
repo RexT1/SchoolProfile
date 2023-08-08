@@ -190,43 +190,45 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:12px;">
-                    <thead>
-                      <tr>
-                        <th style="width:70px;">#</th>
-                        <th>Judul</th>
-                        <th>Deskripsi</th>
-                        <th>Tanggal Post</th>
-                        <th>Author</th>
-                        <th style="text-align:right; width: 100px">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 0;
-                      foreach ($data->result_array() as $i) :
-                        $no++;
-                        $id = $i['pengumuman_id'];
-                        $judul = $i['pengumuman_judul'];
-                        $deskripsi = $i['pengumuman_deskripsi'];
-                        $author = $i['pengumuman_author'];
-                        $tanggal = $i['tanggal'];
-
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:12px;">
+                      <thead>
                         <tr>
-                          <td><?php echo $no; ?></td>
-                          <td><?php echo $judul; ?></td>
-                          <td><?php echo $deskripsi; ?></td>
-                          <td><?php echo $tanggal; ?></td>
-                          <td><?php echo $author; ?></td>
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th style="width:70px;">#</th>
+                          <th>Judul</th>
+                          <th>Deskripsi</th>
+                          <th>Tanggal Post</th>
+                          <th>Author</th>
+                          <th style="text-align:right; width: 100px">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $i) :
+                          $no++;
+                          $id = $i['pengumuman_id'];
+                          $judul = $i['pengumuman_judul'];
+                          $deskripsi = $i['pengumuman_deskripsi'];
+                          $author = $i['pengumuman_author'];
+                          $tanggal = $i['tanggal'];
+
+                        ?>
+                          <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $judul; ?></td>
+                            <td><?php echo $deskripsi; ?></td>
+                            <td><?php echo $tanggal; ?></td>
+                            <td><?php echo $author; ?></td>
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id; ?>"><span class="fa fa-pencil"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id; ?>"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>

@@ -185,40 +185,42 @@ $jum_pesan = $query->num_rows();
               <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:12px;">
-                    <thead>
-                      <tr>
-                        <th style="width:70px;">Tanggal</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Pesan</th>
-                        <th style="text-align:right;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 0;
-                      foreach ($data->result_array() as $i) :
-                        $no++;
-                        $inbox_id = $i['inbox_id'];
-                        $inbox_nama = $i['inbox_nama'];
-                        $inbox_email = $i['inbox_email'];
-                        $inbox_msg = $i['inbox_pesan'];
-                        $tanggal = $i['tanggal'];
-
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:12px;">
+                      <thead>
                         <tr>
-                          <td><?php echo $tanggal; ?></td>
-                          <td><?php echo $inbox_nama; ?></td>
-                          <td><?php echo $inbox_email; ?></td>
-                          <td><?php echo $inbox_msg; ?></td>
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $inbox_id; ?>"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th style="width:70px;">Tanggal</th>
+                          <th>Nama</th>
+                          <th>Email</th>
+                          <th>Pesan</th>
+                          <th style="text-align:right;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $i) :
+                          $no++;
+                          $inbox_id = $i['inbox_id'];
+                          $inbox_nama = $i['inbox_nama'];
+                          $inbox_email = $i['inbox_email'];
+                          $inbox_msg = $i['inbox_pesan'];
+                          $tanggal = $i['tanggal'];
+
+                        ?>
+                          <tr>
+                            <td><?php echo $tanggal; ?></td>
+                            <td><?php echo $inbox_nama; ?></td>
+                            <td><?php echo $inbox_email; ?></td>
+                            <td><?php echo $inbox_msg; ?></td>
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $inbox_id; ?>"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>

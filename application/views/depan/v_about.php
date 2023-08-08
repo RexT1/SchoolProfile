@@ -80,7 +80,7 @@
                 <img src="<?php echo base_url() . 'theme/images/sekolah.png' ?>" class="img-fluid" alt="#">
             </div>
             <hr />
-            <div class="row">
+            <div class="col-md">
                 <h2 style="text-align: center; margin: 0 auto; margin-bottom:20px;">Sejarah Berdirinya SMP YPMII Jakarta</h2>
                 <br />
                 <p style="text-align: justify;">

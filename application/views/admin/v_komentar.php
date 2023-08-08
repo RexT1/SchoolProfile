@@ -185,39 +185,41 @@ $jum_pesan = $query->num_rows();
               <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:12px;">
-                    <thead>
-                      <tr>
-                        <th>Nama</th>
-                        <th>Komentar</th>
-                        <th>Tanggapan Untuk</th>
-                        <th>Dikirimkan Pada</th>
-                        <th style="text-align:right;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      foreach ($data->result() as $row) : ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:12px;">
+                      <thead>
                         <tr>
-                          <td><?php echo $row->komentar_nama; ?></td>
-                          <td><?php echo $row->komentar_isi; ?></td>
-                          <td><a href="<?php echo site_url('artikel/' . $row->tulisan_slug); ?>" target="_blank"><?php echo $row->tulisan_judul; ?></a></td>
-                          <td><?php echo date("d M Y H:i", strtotime($row->komentar_tanggal)); ?></td>
-                          <td style="text-align:right;">
-                            <?php if ($row->komentar_status == '1' && $row->komentar_parent == '0') : ?>
-                              <a class="btn btn-reply" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" data-post_id="<?php echo $row->komentar_tulisan_id; ?>" title="Balas"><span class="fa fa-reply"></span></a>
-                              <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
-                            <?php elseif ($row->komentar_status == '1') : ?>
-                              <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
-                            <?php else : ?>
-                              <a class="btn" href="<?php echo site_url('admin/komentar/publish/' . $row->komentar_id); ?>" title="Publish"><span class="fa fa-send"></span></a>
-                              <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
-                            <?php endif; ?>
-                          </td>
+                          <th>Nama</th>
+                          <th>Komentar</th>
+                          <th>Tanggapan Untuk</th>
+                          <th>Dikirimkan Pada</th>
+                          <th style="text-align:right;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        foreach ($data->result() as $row) : ?>
+                          <tr>
+                            <td><?php echo $row->komentar_nama; ?></td>
+                            <td><?php echo $row->komentar_isi; ?></td>
+                            <td><a href="<?php echo site_url('artikel/' . $row->tulisan_slug); ?>" target="_blank"><?php echo $row->tulisan_judul; ?></a></td>
+                            <td><?php echo date("d M Y H:i", strtotime($row->komentar_tanggal)); ?></td>
+                            <td style="text-align:right;">
+                              <?php if ($row->komentar_status == '1' && $row->komentar_parent == '0') : ?>
+                                <a class="btn btn-reply" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" data-post_id="<?php echo $row->komentar_tulisan_id; ?>" title="Balas"><span class="fa fa-reply"></span></a>
+                                <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
+                              <?php elseif ($row->komentar_status == '1') : ?>
+                                <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
+                              <?php else : ?>
+                                <a class="btn" href="<?php echo site_url('admin/komentar/publish/' . $row->komentar_id); ?>" title="Publish"><span class="fa fa-send"></span></a>
+                                <a class="btn btn-hapus" href="javascript:void(0);" data-id="<?php echo $row->komentar_id; ?>" title="Hapus"><span class="fa fa-trash"></span></a>
+                              <?php endif; ?>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>

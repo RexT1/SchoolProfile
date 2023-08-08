@@ -190,58 +190,60 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:12px;">
-                    <thead>
-                      <tr>
-                        <th style="width:70px;">#</th>
-                        <th>Agenda</th>
-                        <th>Tanggal</th>
-                        <th>Tempat</th>
-                        <th>Waktu</th>
-                        <th>Author</th>
-                        <th style="text-align:right;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 0;
-                      foreach ($data->result_array() as $i) :
-                        $no++;
-                        $agenda_id = $i['agenda_id'];
-                        $agenda_nama = $i['agenda_nama'];
-                        $agenda_deskripsi = $i['agenda_deskripsi'];
-                        $agenda_mulai = $i['agenda_mulai'];
-                        $agenda_selesai = $i['agenda_selesai'];
-                        $agenda_tempat = $i['agenda_tempat'];
-                        $agenda_waktu = $i['agenda_waktu'];
-                        $agenda_keterangan = $i['agenda_keterangan'];
-                        $agenda_author = $i['agenda_author'];
-                        $tanggal = $i['tanggal'];
-
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:12px;">
+                      <thead>
                         <tr>
-                          <td><?php echo $tanggal; ?></td>
-                          <td><?php echo $agenda_nama; ?></td>
-                          <td><?php echo $agenda_mulai . ' s/d ' . $agenda_selesai; ?></td>
-                          <td><?php echo $agenda_tempat; ?></td>
-                          <td><?php echo $agenda_waktu; ?></td>
-                          <td><?php echo $agenda_author; ?></td>
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $agenda_id; ?>"><span class="fa fa-pencil"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $agenda_id; ?>"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th style="width:70px;">#</th>
+                          <th>Agenda</th>
+                          <th>Tanggal</th>
+                          <th>Tempat</th>
+                          <th>Waktu</th>
+                          <th>Author</th>
+                          <th style="text-align:right;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $i) :
+                          $no++;
+                          $agenda_id = $i['agenda_id'];
+                          $agenda_nama = $i['agenda_nama'];
+                          $agenda_deskripsi = $i['agenda_deskripsi'];
+                          $agenda_mulai = $i['agenda_mulai'];
+                          $agenda_selesai = $i['agenda_selesai'];
+                          $agenda_tempat = $i['agenda_tempat'];
+                          $agenda_waktu = $i['agenda_waktu'];
+                          $agenda_keterangan = $i['agenda_keterangan'];
+                          $agenda_author = $i['agenda_author'];
+                          $tanggal = $i['tanggal'];
+
+                        ?>
+                          <tr>
+                            <td><?php echo $tanggal; ?></td>
+                            <td><?php echo $agenda_nama; ?></td>
+                            <td><?php echo $agenda_mulai . ' s/d ' . $agenda_selesai; ?></td>
+                            <td><?php echo $agenda_tempat; ?></td>
+                            <td><?php echo $agenda_waktu; ?></td>
+                            <td><?php echo $agenda_author; ?></td>
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $agenda_id; ?>"><span class="fa fa-pencil"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $agenda_id; ?>"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-                <!-- /.box-body -->
+                  <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
               </div>
-              <!-- /.box -->
+              <!-- /.col -->
             </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
+            <!-- /.row -->
       </section>
       <!-- /.content -->
     </div>
@@ -253,10 +255,10 @@ $jum_pesan = $query->num_rows();
       <strong>Copyright &copy; 2023 <a href="#">SMP YPMII Jakarta Timur</a>.</strong> All rights reserved.
     </footer>
 
-     <div class="control-sidebar-bg"></div>
+    <div class="control-sidebar-bg"></div>
   </div>
   <!-- ./wrapper -->
-s
+  s
   <!--Modal Add Pengguna-->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">

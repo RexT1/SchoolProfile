@@ -183,45 +183,47 @@ $jum_pesan = $query->num_rows();
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-striped" style="font-size:13px;">
-                                        <thead>
-                                            <tr>
-                                                <th style="width:20px;">ID</th>
-                                                <th>Gambar</th>
-                                                <th>Nama</th>
-                                                <th>Tanggal</th>
-                                                <th>Author</th>
-                                                <th>Status Banner</th>
-                                                <th style="text-align:right; width:100px;">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($data->result_array() as $i) :
-                                                $no++;
-                                                $slider_id = $i['slider_id'];
-                                                $slider_gambar = $i['slider_gambar'];
-                                                $slider_judul = $i['slider_judul'];
-                                                $slider_tanggal = $i['tanggal'];
-                                                $slider_author = $i['slider_author'];
-                                                $slider_status = $i['slider_status'];
-                                            ?>
+                                    <div class="table-responsive">
+                                        <table id="example1" class="table table-striped" style="font-size:13px;">
+                                            <thead>
                                                 <tr>
-                                                    <td><?php echo $slider_id; ?></td>
-                                                    <td><img src="<?php echo base_url() . 'assets/images/' . $slider_gambar; ?>" style="width:150px;"></td>
-                                                    <td><?php echo $slider_judul; ?></td>
-                                                    <td><?php echo $slider_tanggal; ?></td>
-                                                    <td><?php echo $slider_author; ?></td>
-                                                    <td><?php echo $slider_status; ?></td>
-                                                    <td style="text-align:right;">
-                                                        <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $slider_id; ?>"><span class="fa fa-pencil"></span></a>
-                                                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $slider_id; ?>"><span class="fa fa-trash"></span></a>
-                                                    </td>
+                                                    <th style="width:20px;">ID</th>
+                                                    <th>Gambar</th>
+                                                    <th>Nama</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Author</th>
+                                                    <th>Status Banner</th>
+                                                    <th style="text-align:right; width:100px;">Aksi</th>
                                                 </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 0;
+                                                foreach ($data->result_array() as $i) :
+                                                    $no++;
+                                                    $slider_id = $i['slider_id'];
+                                                    $slider_gambar = $i['slider_gambar'];
+                                                    $slider_judul = $i['slider_judul'];
+                                                    $slider_tanggal = $i['tanggal'];
+                                                    $slider_author = $i['slider_author'];
+                                                    $slider_status = $i['slider_status'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?php echo $slider_id; ?></td>
+                                                        <td><img src="<?php echo base_url() . 'assets/images/' . $slider_gambar; ?>" style="width:150px;"></td>
+                                                        <td><?php echo $slider_judul; ?></td>
+                                                        <td><?php echo $slider_tanggal; ?></td>
+                                                        <td><?php echo $slider_author; ?></td>
+                                                        <td><?php echo $slider_status; ?></td>
+                                                        <td style="text-align:right;">
+                                                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $slider_id; ?>"><span class="fa fa-pencil"></span></a>
+                                                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $slider_id; ?>"><span class="fa fa-trash"></span></a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>

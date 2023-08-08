@@ -186,35 +186,37 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:13px;">
-                    <thead>
-                      <tr>
-                        <th style="width:100px;">#</th>
-                        <th>Kategori</th>
-                        <th style="text-align:right;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 0;
-                      foreach ($data->result_array() as $i) :
-                        $no++;
-                        $kategori_id = $i['kategori_id'];
-                        $kategori_nama = $i['kategori_nama'];
-
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:13px;">
+                      <thead>
                         <tr>
-                          <td><?php echo $no; ?></td>
-                          <td><?php echo $kategori_nama; ?></td>
-
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $kategori_id; ?>"><span class="fa fa-pencil"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $kategori_id; ?>"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th style="width:100px;">#</th>
+                          <th>Kategori</th>
+                          <th style="text-align:right;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $i) :
+                          $no++;
+                          $kategori_id = $i['kategori_id'];
+                          $kategori_nama = $i['kategori_nama'];
+
+                        ?>
+                          <tr>
+                            <td><?php echo $no; ?></td>
+                            <td><?php echo $kategori_nama; ?></td>
+
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $kategori_id; ?>"><span class="fa fa-pencil"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $kategori_id; ?>"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>

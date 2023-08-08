@@ -185,40 +185,42 @@ $jum_pesan = $query->num_rows();
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="example1" class="table table-striped" style="font-size:12px;">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Kata Sambutan</th>
-                                                <th>Visi</th>
-                                                <th>Misi</th>
-                                                <th style="text-align:right;">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $no = 0;
-                                            foreach ($data->result_array() as $i) :
-                                                $no++;
-                                                $about_id = $i['about_id'];
-                                                $about_sambutan = $i['about_sambutan'];
-                                                $about_visi = $i['about_visi'];
-                                                $about_misi = $i['about_misi'];
-                                            ?>
+                                    <div class="table-responsive">
+                                        <table id="example1" class="table table-striped" style="font-size:12px;">
+                                            <thead>
                                                 <tr>
-                                                    <td><?php echo $no; ?></td>
-                                                    <td><?php echo $about_sambutan; ?></td>
-                                                    <td><?php echo $about_visi; ?></td>
-                                                    <td><?php echo $about_misi; ?></td>
-
-                                                    <td style="text-align:right;">
-                                                        <a class="btn" href="<?php echo base_url() . 'admin/about/get_edit/' . $about_id; ?>"><span class="fa fa-pencil"></span></a>
-                                                        <!-- <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $about_id; ?>"><span class="fa fa-trash"></span></a> -->
-                                                    </td>
+                                                    <th>#</th>
+                                                    <th>Kata Sambutan</th>
+                                                    <th>Visi</th>
+                                                    <th>Misi</th>
+                                                    <th style="text-align:right;">Aksi</th>
                                                 </tr>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 0;
+                                                foreach ($data->result_array() as $i) :
+                                                    $no++;
+                                                    $about_id = $i['about_id'];
+                                                    $about_sambutan = $i['about_sambutan'];
+                                                    $about_visi = $i['about_visi'];
+                                                    $about_misi = $i['about_misi'];
+                                                ?>
+                                                    <tr>
+                                                        <td><?php echo $no; ?></td>
+                                                        <td><?php echo $about_sambutan; ?></td>
+                                                        <td><?php echo $about_visi; ?></td>
+                                                        <td><?php echo $about_misi; ?></td>
+
+                                                        <td style="text-align:right;">
+                                                            <a class="btn" href="<?php echo base_url() . 'admin/about/get_edit/' . $about_id; ?>"><span class="fa fa-pencil"></span></a>
+                                                            <!-- <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $about_id; ?>"><span class="fa fa-trash"></span></a> -->
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>

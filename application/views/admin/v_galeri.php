@@ -187,40 +187,42 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:13px;">
-                    <thead>
-                      <tr>
-                        <th>Gambar</th>
-                        <th>Judul</th>
-                        <th>Tanggal</th>
-                        <th>Author</th>
-                        <th style="text-align:right; width:100px;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php
-                      $no = 0;
-                      foreach ($data->result_array() as $i) :
-                        $no++;
-                        $galeri_id = $i['galeri_id'];
-                        $galeri_judul = $i['galeri_judul'];
-                        $galeri_tanggal = $i['tanggal'];
-                        $galeri_author = $i['galeri_author'];
-                        $galeri_gambar = $i['galeri_gambar'];
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:13px;">
+                      <thead>
                         <tr>
-                          <td><img src="<?php echo base_url() . 'assets/images/' . $galeri_gambar; ?>" style="width:80px;"></td>
-                          <td><?php echo $galeri_judul; ?></td>
-                          <td><?php echo $galeri_tanggal; ?></td>
-                          <td><?php echo $galeri_author; ?></td>
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $galeri_id; ?>"><span class="fa fa-pencil"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $galeri_id; ?>"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th>Gambar</th>
+                          <th>Judul</th>
+                          <th>Tanggal</th>
+                          <th>Author</th>
+                          <th style="text-align:right; width:100px;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $no = 0;
+                        foreach ($data->result_array() as $i) :
+                          $no++;
+                          $galeri_id = $i['galeri_id'];
+                          $galeri_judul = $i['galeri_judul'];
+                          $galeri_tanggal = $i['tanggal'];
+                          $galeri_author = $i['galeri_author'];
+                          $galeri_gambar = $i['galeri_gambar'];
+                        ?>
+                          <tr>
+                            <td><img src="<?php echo base_url() . 'assets/images/' . $galeri_gambar; ?>" style="width:80px;"></td>
+                            <td><?php echo $galeri_judul; ?></td>
+                            <td><?php echo $galeri_tanggal; ?></td>
+                            <td><?php echo $galeri_author; ?></td>
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $galeri_id; ?>"><span class="fa fa-pencil"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $galeri_id; ?>"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>

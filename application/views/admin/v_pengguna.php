@@ -183,57 +183,59 @@ $jum_pesan = $query->num_rows();
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-striped" style="font-size:13px;">
-                    <thead>
-                      <tr>
-                        <th>Photo</th>
-                        <th>Nama</th>
-                        <th>Email</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Password</th>
-                        <th>Kontak</th>
-                        <th>Level</th>
-                        <th style="text-align:center;">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($data->result_array() as $i) :
-                        $pengguna_id = $i['pengguna_id'];
-                        $pengguna_nama = $i['pengguna_nama'];
-                        $pengguna_jenkel = $i['pengguna_jenkel'];
-                        $pengguna_email = $i['pengguna_email'];
-                        $pengguna_username = $i['pengguna_username'];
-                        $pengguna_password = $i['pengguna_password'];
-                        $pengguna_nohp = $i['pengguna_nohp'];
-                        $pengguna_level = $i['pengguna_level'];
-                        $pengguna_photo = $i['pengguna_photo'];
-                      ?>
+                  <div class="table-responsive">
+                    <table id="example1" class="table table-striped" style="font-size:13px;">
+                      <thead>
                         <tr>
-                          <td><img width="40" height="40" class="img-circle" src="<?php echo base_url() . 'assets/images/' . $pengguna_photo; ?>"></td>
-                          <td><?php echo $pengguna_nama; ?></td>
-                          <td><?php echo $pengguna_email; ?></td>
-                          <?php if ($pengguna_jenkel == 'L') : ?>
-                            <td>Laki-Laki</td>
-                          <?php else : ?>
-                            <td>Perempuan</td>
-                          <?php endif; ?>
-                          <td><?php echo $pengguna_password; ?></td>
-                          <td><?php echo $pengguna_nohp; ?></td>
-                          <?php if ($pengguna_level == '1') : ?>
-                            <td>Administrator</td>
-                          <?php else : ?>
-                            <td>Author</td>
-                          <?php endif; ?>
-                          <td style="text-align:right;">
-                            <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $pengguna_id; ?>" title="Edit Pengguna"><span class="fa fa-pencil"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalPass<?php echo $pengguna_id; ?>" title="Ganti Password"><span class="fa fa-unlock-alt"></span></a>
-                            <a class="btn" href="<?php echo base_url() . 'admin/pengguna/reset_password/' . $pengguna_id; ?>" title="Reset Password"><span class="fa fa-refresh"></span></a>
-                            <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $pengguna_id; ?>" title="Hapus Pengguna"><span class="fa fa-trash"></span></a>
-                          </td>
+                          <th>Photo</th>
+                          <th>Nama</th>
+                          <th>Email</th>
+                          <th>Jenis Kelamin</th>
+                          <th>Password</th>
+                          <th>Kontak</th>
+                          <th>Level</th>
+                          <th style="text-align:center;">Aksi</th>
                         </tr>
-                      <?php endforeach; ?>
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($data->result_array() as $i) :
+                          $pengguna_id = $i['pengguna_id'];
+                          $pengguna_nama = $i['pengguna_nama'];
+                          $pengguna_jenkel = $i['pengguna_jenkel'];
+                          $pengguna_email = $i['pengguna_email'];
+                          $pengguna_username = $i['pengguna_username'];
+                          $pengguna_password = $i['pengguna_password'];
+                          $pengguna_nohp = $i['pengguna_nohp'];
+                          $pengguna_level = $i['pengguna_level'];
+                          $pengguna_photo = $i['pengguna_photo'];
+                        ?>
+                          <tr>
+                            <td><img width="40" height="40" class="img-circle" src="<?php echo base_url() . 'assets/images/' . $pengguna_photo; ?>"></td>
+                            <td><?php echo $pengguna_nama; ?></td>
+                            <td><?php echo $pengguna_email; ?></td>
+                            <?php if ($pengguna_jenkel == 'L') : ?>
+                              <td>Laki-Laki</td>
+                            <?php else : ?>
+                              <td>Perempuan</td>
+                            <?php endif; ?>
+                            <td><?php echo $pengguna_password; ?></td>
+                            <td><?php echo $pengguna_nohp; ?></td>
+                            <?php if ($pengguna_level == '1') : ?>
+                              <td>Administrator</td>
+                            <?php else : ?>
+                              <td>Author</td>
+                            <?php endif; ?>
+                            <td style="text-align:right;">
+                              <a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $pengguna_id; ?>" title="Edit Pengguna"><span class="fa fa-pencil"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalPass<?php echo $pengguna_id; ?>" title="Ganti Password"><span class="fa fa-unlock-alt"></span></a>
+                              <a class="btn" href="<?php echo base_url() . 'admin/pengguna/reset_password/' . $pengguna_id; ?>" title="Reset Password"><span class="fa fa-refresh"></span></a>
+                              <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $pengguna_id; ?>" title="Hapus Pengguna"><span class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <!-- /.box-body -->
               </div>
