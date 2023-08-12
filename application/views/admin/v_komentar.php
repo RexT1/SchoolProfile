@@ -130,14 +130,16 @@ $jum_pesan = $query->num_rows();
             </a>
           </li>
 
-          <li>
-            <a href="<?php echo base_url() . 'admin/inbox' ?>">
-              <i class="fa fa-envelope"></i> <span>Inbox</span>
-              <span class="pull-right-container">
-                <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
-              </span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('akses') == '1') { ?>
+            <li>
+              <a href="<?php echo base_url() . 'admin/inbox' ?>">
+                <i class="fa fa-envelope"></i> <span>Inbox</span>
+                <span class="pull-right-container">
+                  <small class="label pull-right bg-green"><?php echo $jum_pesan; ?></small>
+                </span>
+              </a>
+            </li>
+          <?php }; ?>
 
           <li class="active">
             <a href="<?php echo base_url() . 'admin/komentar' ?>">
@@ -242,90 +244,6 @@ $jum_pesan = $query->num_rows();
     <div class="control-sidebar-bg"></div>
   </div>
   <!-- ./wrapper -->
-
-  <!--Modal Add Pengguna-->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><span class="fa fa-close"></span></span></button>
-          <h4 class="modal-title" id="myModalLabel">Add Agenda</h4>
-        </div>
-        <form class="form-horizontal" action="<?php echo base_url() . 'admin/agenda/simpan_agenda' ?>" method="post" enctype="multipart/form-data">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Nama Agenda</label>
-              <div class="col-sm-7">
-                <input type="text" name="xnama_agenda" class="form-control" id="inputUserName" placeholder="Nama Agenda" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Deskripsi</label>
-              <div class="col-sm-7">
-                <textarea class="form-control" rows="3" name="xdeskripsi" placeholder="Deskripsi ..." required></textarea>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Mulai</label>
-              <div class="col-sm-7">
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" name="xmulai" class="form-control pull-right" id="datepicker" required>
-                </div>
-              </div>
-              <!-- /.input group -->
-            </div>
-            <!-- /.form group -->
-
-            <!-- Date range -->
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Selesai</label>
-              <div class="col-sm-7">
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" name="xselesai" class="form-control pull-right" id="datepicker2" required>
-                </div>
-              </div>
-              <!-- /.input group -->
-            </div>
-            <!-- /.form group -->
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Tempat</label>
-              <div class="col-sm-7">
-                <input type="text" name="xtempat" class="form-control" id="inputUserName" placeholder="Tempat" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Waktu</label>
-              <div class="col-sm-7">
-                <input type="text" name="xwaktu" class="form-control" id="inputUserName" placeholder="Contoh: 10.30-11.00 WIB" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="inputUserName" class="col-sm-4 control-label">Keterangan</label>
-              <div class="col-sm-7">
-                <textarea class="form-control" name="xketerangan" rows="2" placeholder="Keterangan ..."></textarea>
-              </div>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary btn-flat" id="simpan">Simpan</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
 
   <div class="modal fade" id="ModalHapus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
