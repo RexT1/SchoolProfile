@@ -195,8 +195,6 @@ CREATE TABLE `tbl_pengguna` (
 INSERT INTO `tbl_pengguna` (`pengguna_id`, `pengguna_nama`, `pengguna_jenkel`, `pengguna_username`, `pengguna_password`, `pengguna_email`, `pengguna_nohp`, `pengguna_status`, `pengguna_level`, `pengguna_register`, `pengguna_photo`) VALUES
 (1, 'Admin', 'L', 'admin', '0196708f83ab4744d9c30c9a799b5bd8', 'smpypmii@gmail.com', '089695447715', 1, '1', '2023-07-10 09:57:17', 'c121dab82e91dd2da78047a14c0699ec.png'),
 (2, 'Aqmal', 'L', 'aqmal', '202cb962ac59075b964b07152d234b70', 'aqmal.idris01@gmail.com', '081389003636', 1, '1', '2023-07-10 09:58:37', 'e224368a205ffec1b91bf66e4a6bc2b3.jpg'),
-(3, 'Muh. Fanar', 'L', 'kepsek', '202cb962ac59075b964b07152d234b70', 'admin@admin.sch.id', '0812345678', 1, '2', '2023-07-11 08:30:03', '7065d0a7e493e918a56c6b98d4b40775.jpg'),
-(4, 'Guru', 'L', 'guru', '202cb962ac59075b964b07152d234b70', 'admin@admin.sch.id', '0812345678', 1, '2', '2023-07-11 10:14:37', '38151e7544d418d86d1ba412ad8eeefa.png');
 
 -- --------------------------------------------------------
 
