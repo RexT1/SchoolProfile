@@ -1,6 +1,7 @@
 <?php
 
-class Mock_Database_Schema_Skeleton {
+class Mock_Database_Schema_Skeleton
+{
 
 	/**
 	 * @var object Database Holder
@@ -22,12 +23,10 @@ class Mock_Database_Schema_Skeleton {
 	 */
 	public static function init($driver)
 	{
-		if (empty(self::$db) && empty(self::$forge))
-		{
+		if (empty(self::$db) && empty(self::$forge)) {
 			// E_DEPRECATED notices thrown by mysql_connect(), mysql_pconnect()
 			// on PHP 5.5+ cause the tests to fail
-			if ($driver === 'mysql' && version_compare(PHP_VERSION, '5.5', '>='))
-			{
+			if ($driver === 'mysql' && version_compare(PHP_VERSION, '5.5', '>=')) {
 				error_reporting(E_ALL & ~E_DEPRECATED);
 			}
 
@@ -141,15 +140,12 @@ class Mock_Database_Schema_Skeleton {
 			)
 		);
 
-		foreach ($data as $table => $dummy_data)
-		{
+		foreach ($data as $table => $dummy_data) {
 			self::$db->truncate($table);
 
-			foreach ($dummy_data as $single_dummy_data)
-			{
+			foreach ($dummy_data as $single_dummy_data) {
 				self::$db->insert($table, $single_dummy_data);
 			}
 		}
 	}
-
 }

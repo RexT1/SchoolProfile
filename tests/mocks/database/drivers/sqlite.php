@@ -1,6 +1,7 @@
 <?php
 
-class Mock_Database_Drivers_Sqlite extends Mock_Database_DB_Driver {
+class Mock_Database_Drivers_Sqlite extends Mock_Database_DB_Driver
+{
 
 	/**
 	 * Instantiate the database driver
@@ -12,5 +13,4 @@ class Mock_Database_Drivers_Sqlite extends Mock_Database_DB_Driver {
 	{
 		parent::__construct('CI_DB_sqlite3_driver', $config);
 	}
-
 }

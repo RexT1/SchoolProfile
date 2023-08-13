@@ -1,6 +1,7 @@
 <?php
 
-class Mock_Core_Input extends CI_Input {
+class Mock_Core_Input extends CI_Input
+{
 
 	/**
 	 * Since we use GLOBAL to fetch Security and Utf8 classes,
@@ -40,10 +41,8 @@ class Mock_Core_Input extends CI_Input {
 
 	public function __set($name, $value)
 	{
-		if ($name === 'ip_address')
-		{
+		if ($name === 'ip_address') {
 			$this->ip_address = $value;
 		}
 	}
-
 }

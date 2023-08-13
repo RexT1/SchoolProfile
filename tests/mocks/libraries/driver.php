@@ -3,14 +3,14 @@
 /**
  * Mock library to subclass Driver for testing
  */
-class Mock_Libraries_Driver extends CI_Driver_Library {
+class Mock_Libraries_Driver extends CI_Driver_Library
+{
 	/**
 	 * Set valid drivers list
 	 */
 	public function driver_list($drivers = NULL)
 	{
-		if (empty($drivers))
-		{
+		if (empty($drivers)) {
 			return $this->valid_drivers;
 		}
 

@@ -1,6 +1,7 @@
 <?php
 
-class CI_TestConfig extends CI_Config {
+class CI_TestConfig extends CI_Config
+{
 
 	public $config = array();
 	public $_config_paths = array(APPPATH);
@@ -16,5 +17,4 @@ class CI_TestConfig extends CI_Config {
 		$this->loaded[] = $file;
 		return TRUE;
 	}
-
 }

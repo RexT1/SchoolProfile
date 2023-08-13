@@ -3,7 +3,8 @@
 /**
  * Mock library to add testing features to Session driver library
  */
-class Mock_Libraries_Session extends CI_Session {
+class Mock_Libraries_Session extends CI_Session
+{
 	/**
 	 * Simulate new page load
 	 */
@@ -18,21 +19,21 @@ class Mock_Libraries_Session extends CI_Session {
 /**
  * Mock cookie driver to overload cookie setting
  */
-class Mock_Libraries_Session_cookie extends CI_Session_cookie {
+class Mock_Libraries_Session_cookie extends CI_Session_cookie
+{
 	/**
 	 * Overload _setcookie to manage $_COOKIE values, since actual cookies can't be set in unit testing
 	 */
 	protected function _setcookie($name, $value = '', $expire = 0, $path = '', $domain = '', $secure = FALSE, $httponly = FALSE)
 	{
-		if (empty($value) OR $expire <= time())
-		{
+		if (empty($value) or $expire <= time()) {
 			unset($_COOKIE[$name]);
-		}
-		else
-		{
+		} else {
 			$_COOKIE[$name] = $value;
 		}
 	}
 }
 
-class Mock_Libraries_Session_native extends CI_Session_native {}
+class Mock_Libraries_Session_native extends CI_Session_native
+{
+}

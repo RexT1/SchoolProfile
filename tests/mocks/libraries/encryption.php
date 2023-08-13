@@ -1,6 +1,7 @@
 <?php
 
-class Mock_Libraries_Encryption extends CI_Encryption {
+class Mock_Libraries_Encryption extends CI_Encryption
+{
 
 	/**
 	 * __get_params()
@@ -33,7 +34,6 @@ class Mock_Libraries_Encryption extends CI_Encryption {
 	 */
 	public function __driver_get_handle($driver, $cipher, $mode)
 	{
-		return $this->{'_'.$driver.'_get_handle'}($cipher, $mode);
+		return $this->{'_' . $driver . '_get_handle'}($cipher, $mode);
 	}
-
 }

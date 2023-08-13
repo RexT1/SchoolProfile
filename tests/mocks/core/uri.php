@@ -1,11 +1,12 @@
 <?php
 
-class Mock_Core_URI extends CI_URI {
+class Mock_Core_URI extends CI_URI
+{
 
 	public function __construct()
 	{
 		$test = CI_TestCase::instance();
-		$cls =& $test->ci_core_class('cfg');
+		$cls = &$test->ci_core_class('cfg');
 
 		// set predictable config values
 		$test->ci_set_config(array(
@@ -18,8 +19,7 @@ class Mock_Core_URI extends CI_URI {
 
 		$this->config = new $cls;
 
-		if ($this->config->item('enable_query_strings') !== TRUE OR is_cli())
-		{
+		if ($this->config->item('enable_query_strings') !== TRUE or is_cli()) {
 			$this->_permitted_uri_chars = $this->config->item('permitted_uri_chars');
 		}
 	}
@@ -28,5 +28,4 @@ class Mock_Core_URI extends CI_URI {
 	{
 		$this->_permitted_uri_chars = $value;
 	}
-
 }

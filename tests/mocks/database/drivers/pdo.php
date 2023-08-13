@@ -1,6 +1,7 @@
 <?php
 
-class Mock_Database_Drivers_PDO extends Mock_Database_DB_Driver {
+class Mock_Database_Drivers_PDO extends Mock_Database_DB_Driver
+{
 
 	/**
 	 * Instantiate the database driver
