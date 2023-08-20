@@ -266,27 +266,24 @@ $jum_pesan = $query->num_rows();
             <div class="box">
               <div class="box-header with-border">
                 <h3 class="box-title">Pengunjung bulan ini</h3>
-
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <div class="row">
-                  <div class="col-md-12">
-
+                <div class="table-responsive">
+                  <div class="row">
                     <div class="col-md-12">
-                      <canvas id="canvas" width="1000" height="280"></canvas>
+                      <div class="col-md-12">
+                        <canvas id="canvas" width="1200" height="280"></canvas>
+                      </div>
+                      <!-- /.chart-responsive -->
                     </div>
-                    <!-- /.chart-responsive -->
+                    <!-- /.col -->
                   </div>
-                  <!-- /.col -->
-
-                  <!-- /.col -->
+                  <!-- /.row -->
                 </div>
-                <!-- /.row -->
+                <!-- ./table-responsive -->
               </div>
               <!-- ./box-body -->
-
-              <!-- /.box-footer -->
             </div>
             <!-- /.box -->
           </div>

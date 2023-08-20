@@ -112,7 +112,6 @@
                     </div>
 
                     <div class="blog-tiltle_block">
-
                         <div class="blog-icons">
                             <div class="blog-share_block">
                                 <div class="pull-left">
@@ -224,7 +223,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <input type="hidden" name="id" value="<?php echo $id; ?>" required>
-                                                <button type="submit" class="btn btn-warning" />Kirim Komentar</button>
+                                                <button type="submit" class="btn btn-warning">Kirim Komentar</button>
                                             </div>
                                             <!-- // end .col-12 -->
                                         </div>
