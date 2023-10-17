@@ -2,8 +2,12 @@
 
 ## Documentation
 
-![Home][Home]
-![Admin][Admin]
+<div style="border: 1px solid #000;">
+  <img src="/assets/images/AdminPage.png" alt="Admin" />
+</div>
+<div style="border: 1px solid #000;">
+  <img src="/assets/images/HomePage.png" alt="Home" />
+</div>
 
 ## About
 
