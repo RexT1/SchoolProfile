@@ -90,6 +90,12 @@ Follow the steps below for installation of this project.
 5. Open browser with URL:
     - `http://localhost/[your_directory]/` (User Access)
     - `http://localhost/[your_directory]/administrator` (Administrator Access)
+6. Login Administrator:
+    - Username: admin
+    - Password: 123
+
+    - Username: author
+    - Password: 123
 
 Note: 
 - Replace [your_directory] with actual folder name where you cloned the repository.
