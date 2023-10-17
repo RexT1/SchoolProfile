@@ -2,12 +2,8 @@
 
 ## Documentation
 
-<div style="border: 1px solid #000;">
-  <img src="/assets/images/AdminPage.png" alt="Admin" />
-</div>
-<div style="border: 1px solid #000;">
-  <img src="/assets/images/HomePage.png" alt="Home" />
-</div>
+<img src="/assets/images/AdminPage.png" alt="Admin" style="border: 1px solid black;"/>
+<img src="/assets/images/HomePage.png" alt="Home" style="border: 1px solid black;"/>
 
 ## About
 
@@ -78,7 +74,10 @@ Follow the steps below for installation of this project.
 2. Run your MySQL server (i'm using XAMPP).
 3. Import database from `smpypmii.sql` file located at root directory.
 4. Change base url in application > config > config.php line no: 26.
-Example : $config['base_url'] = 'http://localhost/[your_directory]';
+    - Example : 
+     ```sh
+    $config['base_url'] = 'http://localhost/[your_directory]';
+    ```
     ```sh
     $db['default'] = array(
         'dsn'	=> '',
@@ -89,8 +88,8 @@ Example : $config['base_url'] = 'http://localhost/[your_directory]';
         'dbdriver' => 'mysqli',
     ```
 5. Open browser with URL:
-    - `http://localhost/[your_directory]/`. (User Access)
-    - `http://localhost/[your_directory]/administrator`. (Administrator Access)
+    - `http://localhost/[your_directory]/` (User Access)
+    - `http://localhost/[your_directory]/administrator` (Administrator Access)
 
 Note: 
 - Replace [your_directory] with actual folder name where you cloned the repository.
