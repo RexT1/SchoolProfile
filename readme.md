@@ -1,7 +1,11 @@
-  <h5 align="center" style="font-size: 20px">Website Profil Sekolah - CodeIgniter 3</h5>
+<h1 align="center" style="font-size: 30px">Website Profil Sekolah - CodeIgniter 3</h1>
+
+## Documentation
+
+![Home][Home]
+![Admin][Admin]
 
 ## About
-![Admin][Home]
 
 This project is the creation of a profile website for the East Jakarta YPMII Middle School. This project is a web application developed using CodeIgniter 3. This website has 2 different pages, namely the User page and the Administrator page. Users can access information about the school, with pages that provide information in the form of About the School, Articles, Agenda, Announcements, Gallery and Contact. Administrators can manage any information content presented on the website. There is information regarding the number of website visits and the number of article visits on the admin dashboard page.
 
@@ -85,8 +89,8 @@ Example : $config['base_url'] = 'http://localhost/[your_directory]';
     - `http://localhost/[your_directory]/administrator`. (Administrator Access)
 
 Note: 
-    - Replace [your_directory] with actual folder name where you cloned the repository.
-    - Replace [your_database] with actual database name where you import the database.
+- Replace [your_directory] with actual folder name where you cloned the repository.
+- Replace [your_database] with actual database name where you import the database.
 
 ## Contributing
 
