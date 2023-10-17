@@ -96,8 +96,8 @@ Example : $config['base_url'] = 'http://localhost/[your_directory]';
     - `http://localhost/[your_directory]/administrator`. (Administrator Access)
 
 Note: 
-- Replace [your_directory] with actual folder name where you cloned the repository.
-- Replace [your_database] with actual database name where you import the database.
+    - Replace [your_directory] with actual folder name where you cloned the repository.
+    - Replace [your_database] with actual database name where you import the database.
 
 ***************
 Contributing
@@ -124,4 +124,4 @@ Distributed under the MIT License. See `License.txt` for more information.
 Contact
 *********
 
-If you have any questions, feel free to reach out to `Aqmal Idris`` at `rivaans15@gmail.com`.
+If you have any questions, feel free to reach out to `Aqmal Idris` at `rivaans15@gmail.com`.
