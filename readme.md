@@ -1,16 +1,10 @@
-###################
-Website Profil Sekolah - CodeIgniter 3
-###################
+  <h3 align="center">Website Profil Sekolah - CodeIgniter 3</h3>
 
-*******************
-About
-*******************
+## About
 
 This project is the creation of a profile website for the East Jakarta YPMII Middle School. This project is a web application developed using CodeIgniter 3. This website has 2 different pages, namely the User page and the Administrator page. Users can access information about the school, with pages that provide information in the form of About the School, Articles, Agenda, Announcements, Gallery and Contact. Administrators can manage any information content presented on the website. There is information regarding the number of website visits and the number of article visits on the admin dashboard page.
 
-*******************
-Server Requirements
-*******************
+## Server Requirements
 
 - PHP version 5.6 or newer is recommended.
 - MySQL or MariaDB
@@ -20,9 +14,7 @@ It should work on 5.3.7 as well, but we strongly advise you NOT to run
 such old versions of PHP, because of potential security and performance
 issues, as well as missing features.
 
-************
-Available Features
-************
+## Available Features
 
 - [x] Add User Page
     - [x] Home Page
@@ -62,15 +54,11 @@ Available Features
 - [ ] Add Realtime Comment
 - [ ] Add PPDB Page
 
-************
-Getting Started
-************
+## Getting Started
 
 Follow the instruction below to install the project locally.
 
-************
-Installation
-************
+## Installation
 
 Follow the steps below for installation of this project.
 
@@ -99,9 +87,7 @@ Note:
     - Replace [your_directory] with actual folder name where you cloned the repository.
     - Replace [your_database] with actual database name where you import the database.
 
-***************
-Contributing
-***************
+## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -114,14 +100,10 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/newFeature`)
 5. Open a Pull Request
 
-*******
-License
-*******
+## License
 
 Distributed under the MIT License. See `License.txt` for more information.
 
-*********
-Contact
-*********
+## Contact
 
 If you have any questions, feel free to reach out to `Aqmal Idris` at `rivaans15@gmail.com`.
